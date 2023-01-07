@@ -1,0 +1,12 @@
+{
+    "require": {
+        "composer/satis": "dev-main",
+        "symfony/process": "^6.2"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/satis": true
+        },
+        "cache-dir": "/composer"
+    }
+}

@@ -1,0 +1,25 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./etc/nginx/${ENV}:/etc/nginx/conf.d
+      - ./data/build:/var/www/satis # satis output
+    networks:
+      - satis
+
+  fpm:
+    image: docker.io/bitnami/php-fpm:8.1
+    volumes:
+      - ./src:/app # webhook & satis
+      - ./data/build:/build # satis output
+      - ./data/composer:/composer # composer cache
+    networks:
+      - satis
+
+networks:
+  satis:
+    driver: bridge

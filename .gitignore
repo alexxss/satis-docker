@@ -1,0 +1,8 @@
+.env
+data/composer
+data/build
+etc/certbot/www/*
+etc/certbot/letsencrypt/*
+etc/apache2
+src/vendor
+src/auth.json
