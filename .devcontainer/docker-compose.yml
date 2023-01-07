@@ -1,0 +1,30 @@
+name: satis-docker
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "${FE_HTTP_PORT}:80"
+    volumes:
+      - ./etc/nginx/${ENV}:/etc/nginx/conf.d
+      - ../data/build:/var/www/satis # satis output
+    networks:
+      - satis
+
+  fpm:
+    build:
+      context: .
+      dockerfile: ./etc/fpm/${ENV}/Dockerfile
+      args:
+        FPM_UID: ${FPM_UID:-1000}
+        FPM_GID: ${FPM_GID:-1000}
+    volumes:
+      - ../src:/app # webhook & satis
+      - ../data/build:/build # satis output
+      - ../data/composer:/composer # composer cache
+    working_dir: /app
+    networks:
+      - satis
+
+networks:
+  satis:
+    driver: bridge

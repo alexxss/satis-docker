@@ -1,0 +1,27 @@
+{
+    "name": "companyname/repo-name",
+    "homepage": "https://[your_homepage_url]",
+    "repositories": [
+        {
+            "name": "companyname/module-one",
+            "type": "vcs",
+            "url": "git@github.com:CompanyName/ModuleOne.git"
+        },
+        {
+            "name": "companyname/module-two",
+            "type": "vcs",
+            "url": "git@github.com:CompanyName/ModuleTwo.git"
+        },
+        {
+            "name": "companyname/module-three",
+            "type": "vcs",
+            "url": "git@github.com:CompanyName/ModuleThree.git"
+        },
+        {
+            "name": "companyname/module-four",
+            "type": "vcs",
+            "url": "https://github.com/CompanyName/ModuleFour.git"
+        }
+    ],
+    "require-all": true
+}
